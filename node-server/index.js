@@ -34,6 +34,10 @@ io.on('connection', socket => {
     socket.on('send', message => {
         socket.broadcast.emit('receive', {message: message, name: users[socket.id]})
     });
+    socket.on('disconnecting', () => {
+        console.log('A user disconnected');
+        socket.broadcast.emit('user-left', users[socket.id]);
+    })
 })
 
 http.listen(port, () => {
