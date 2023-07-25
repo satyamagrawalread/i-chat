@@ -7,7 +7,7 @@ const messageContainer = document.querySelector('.container');
 const audioClip = document.getElementById('audioClip');
 
 
-
+// Function Expression to append message inside div (having class names as message & value of position) into container class.
 const append = (message, position) => {
     const messageElement = document.createElement('div');
     messageElement.innerText = message;
@@ -15,10 +15,13 @@ const append = (message, position) => {
     messageElement.classList.add(position);
     messageContainer.append(messageElement);
 }
-
-const name = prompt("Enter your name to join");
+let name;
+while(!name) {
+    name = prompt("Enter your name to join");
+}
 if(name!=undefined) {
     socket.emit('new-user-joined', name);
+    append(`Welcome ${name}`, 'center');
     socket.on('user-joined', name => {
         append(`${name} joined the chat`,'center');
     })

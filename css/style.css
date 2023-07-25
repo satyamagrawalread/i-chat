@@ -39,7 +39,7 @@ body{
     clear: both;
 }
 .center {
-    margin: auto;
+    margin: 10px auto;
     clear: both;
     background-color: blueviolet;
     padding: 5px;
